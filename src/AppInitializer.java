@@ -57,11 +57,54 @@ public class AppInitializer{
         o1.getPetList().add(p1);
         o1.getPetList().add(p2);*/
 
+        Lecture l1 = new Lecture();
+        l1.setlId("L001");
+        l1.setName("Niroth");
 
+        Lecture l2=new Lecture();
+        l2.setlId("L002");
+        l2.setName("prasad");
+
+
+        Subject s1 = new Subject();
+        s1.setsId("S001");
+        s1.setName("PRF");
+
+
+        Subject s2 = new Subject();
+        s2.setsId("S002");
+        s2.setName("DBMS");
+
+        ArrayList<Subject> subjectList=new ArrayList<>();
+        subjectList.add(s1);
+        subjectList.add(s2);
+
+        //1type
+        /*ArrayList<Lecture> lectureList=new ArrayList<>();
+        lectureList.add(l1);
+        lectureList.add(l2);
+
+        l1.setSubjectList(subjectList);
+        l2.setSubjectList(subjectList);
+
+        s1.setLectureList(lectureList);
+        s2.setLectureList(lectureList);*/
+
+        //2 type
+
+        l1.getSubjectList().add(s1);
+        l1.getSubjectList().add(s2);
+
+        s1.getLectureList().add(l1);
+        s2.getLectureList().add(l1);
 
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
+        session.save(l1);
+        session.save(l2);
+        session.save(s1);
+        session.save(s2);
 
         transaction.commit();
         session.close();
