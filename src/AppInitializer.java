@@ -32,7 +32,8 @@ public class AppInitializer{
         l3.setlId("L003");
         l3.setDescription("asus");
         l3.setStudent(s2);*/
-/*Owner o1 = new Owner();
+
+/*      Owner o1 = new Owner();
         o1.setoId("o001");
         o1.setName("kamala");
 
@@ -57,7 +58,7 @@ public class AppInitializer{
         o1.getPetList().add(p1);
         o1.getPetList().add(p2);*/
 
-        Lecture l1 = new Lecture();
+      /*  Lecture l1 = new Lecture();
         l1.setlId("L001");
         l1.setName("Niroth");
 
@@ -77,7 +78,7 @@ public class AppInitializer{
 
         ArrayList<Subject> subjectList=new ArrayList<>();
         subjectList.add(s1);
-        subjectList.add(s2);
+        subjectList.add(s2);*/
 
         //1type
         /*ArrayList<Lecture> lectureList=new ArrayList<>();
@@ -92,19 +93,21 @@ public class AppInitializer{
 
         //2 type
 
-        l1.getSubjectList().add(s1);
+       /* l1.getSubjectList().add(s1);
         l1.getSubjectList().add(s2);
 
         s1.getLectureList().add(l1);
         s2.getLectureList().add(l1);
-
+*/
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
-        session.save(l1);
-        session.save(l2);
-        session.save(s1);
-        session.save(s2);
+        Owner o1 = session.get(Owner.class, "o001");
+        System.out.println(o1.getoId()+" - "+o1.getName());
+
+        System.out.println("-----------------");
+
+        System.out.println(o1.getPetList());
 
         transaction.commit();
         session.close();

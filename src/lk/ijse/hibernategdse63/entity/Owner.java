@@ -1,10 +1,7 @@
 package lk.ijse.hibernategdse63.entity;
 
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Transient;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +12,7 @@ public class Owner {
     private String name;
 
 
-    @OneToMany(mappedBy = "owner")
+    @OneToMany(mappedBy = "owner" , fetch = FetchType.EAGER)
     private List<Pet> petList=new ArrayList<>();
 
     public Owner(){
@@ -57,6 +54,7 @@ public class Owner {
         return "Owner{" +
                 "oId='" + oId + '\'' +
                 ", name='" + name + '\'' +
+                ", petList=" + petList +
                 '}';
     }
 }
